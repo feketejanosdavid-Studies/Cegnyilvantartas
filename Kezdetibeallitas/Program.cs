@@ -45,6 +45,9 @@ namespace Kezdetibeallitas
 
             Console.WriteLine("Közepesen keresők száma:"+ db.Alkalmazott.Where(x => x.Fizetes > 1000 && x.Fizetes < 2000)+" db");
             KiIr(db.Alkalmazott.Where(x => x.Fizetes > 1000 && x.Fizetes < 2000));
+
+            int[] t = { 7902, 7566, 7788 };
+            KiIr(db.Alkalmazott.Where(x => t.Contains(x.FonokId)));
         }
 
 
