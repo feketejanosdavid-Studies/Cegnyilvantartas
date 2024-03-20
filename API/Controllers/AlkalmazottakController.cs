@@ -5,23 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ClassLibrary.Data;
+using API.Data;
 using ClassLibrary.Models;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlkalmazottsController : ControllerBase
+    public class AlkalmazottakController : ControllerBase
     {
-        private readonly CegContext _context;
+        private readonly APIContext _context;
 
-        public AlkalmazottsController(CegContext context)
+        public AlkalmazottakController(APIContext context)
         {
             _context = context;
         }
 
-        // GET: api/Alkalmazotts
+        // GET: api/Alkalmazottak
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Alkalmazott>>> GetAlkalmazott()
         {
@@ -32,7 +32,7 @@ namespace API.Controllers
             return await _context.Alkalmazott.ToListAsync();
         }
 
-        // GET: api/Alkalmazotts/5
+        // GET: api/Alkalmazottak/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Alkalmazott>> GetAlkalmazott(int id)
         {
@@ -50,7 +50,7 @@ namespace API.Controllers
             return alkalmazott;
         }
 
-        // PUT: api/Alkalmazotts/5
+        // PUT: api/Alkalmazottak/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAlkalmazott(int id, Alkalmazott alkalmazott)
@@ -81,14 +81,14 @@ namespace API.Controllers
             return NoContent();
         }
 
-        // POST: api/Alkalmazotts
+        // POST: api/Alkalmazottak
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Alkalmazott>> PostAlkalmazott(Alkalmazott alkalmazott)
         {
           if (_context.Alkalmazott == null)
           {
-              return Problem("Entity set 'CegContext.Alkalmazott'  is null.");
+              return Problem("Entity set 'APIContext.Alkalmazott'  is null.");
           }
             _context.Alkalmazott.Add(alkalmazott);
             try
@@ -110,7 +110,7 @@ namespace API.Controllers
             return CreatedAtAction("GetAlkalmazott", new { id = alkalmazott.Id }, alkalmazott);
         }
 
-        // DELETE: api/Alkalmazotts/5
+        // DELETE: api/Alkalmazottak/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAlkalmazott(int id)
         {

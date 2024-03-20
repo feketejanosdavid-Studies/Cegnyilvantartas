@@ -17,10 +17,10 @@ namespace ClassLibrary.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //string connMsSql = "Server=(localdb)\\MSSQLLocalDB;Database=Cegnyilvantartas;Trusted_Connection=True;";
-            string connMySql = "Server=127.0.0.1;User ID=root;Password=;Database=Cegnyilvantartas;";
-            optionsBuilder.UseMySql(connMySql, ServerVersion.AutoDetect(connMySql));
-
+            string connMsSql = "Server=(localdb)\\mssqllocaldb;Database=API.Data;Trusted_Connection=True;MultipleActiveResultSets=true";
+            //string connMySql = "Server=127.0.0.1;User ID=root;Password=;Database=Cegnyilvantartas;";
+            //optionsBuilder.UseMySql(connMySql, ServerVersion.AutoDetect(connMySql));
+            optionsBuilder.UseSqlServer(connMsSql);
             //optionsBuilder.UseSqlServer(connMsSql);
         }
 
