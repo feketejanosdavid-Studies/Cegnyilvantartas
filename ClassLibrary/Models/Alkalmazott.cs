@@ -20,5 +20,22 @@ namespace ClassLibrary.Models
         public int Fizetes { get; set; }
         public int Jutalom { get; set; }
         public int OsztalyId { get; set; }
+
+        public Alkalmazott() { 
+        
+        }
+
+        public Alkalmazott(string sor)
+        {
+            string[] t = sor.Split(';');
+            Id = Convert.ToInt32(t[0]);
+            Nev = t[1];
+            Beosztas = t[2];
+            FonokId = t[3].Equals("") ? 0 : Convert.ToInt32(t[3]);
+            Belepes = DateTime.Parse(t[4]);
+            Fizetes = Convert.ToInt32(t[5]);
+            Jutalom = t[6].Equals("")?0:Convert.ToInt32(t[6]);
+            OsztalyId = Convert.ToInt32(t[7]);
+        }
     }
 }
