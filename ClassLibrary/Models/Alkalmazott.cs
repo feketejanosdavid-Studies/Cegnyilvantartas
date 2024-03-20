@@ -22,7 +22,7 @@ namespace ClassLibrary.Models
         public int OsztalyId { get; set; }
 
         public Alkalmazott() { 
-        
+         
         }
 
         public Alkalmazott(string sor)
@@ -34,8 +34,13 @@ namespace ClassLibrary.Models
             FonokId = t[3].Equals("") ? 0 : Convert.ToInt32(t[3]);
             Belepes = DateTime.Parse(t[4]);
             Fizetes = Convert.ToInt32(t[5]);
-            Jutalom = t[6].Equals("")?0:Convert.ToInt32(t[6]);
+            Jutalom = t[6].Equals("") ? 0 : Convert.ToInt32(t[6]);
             OsztalyId = Convert.ToInt32(t[7]);
+        }
+
+        public override string? ToString()
+        {
+            return $"{Nev}, {Beosztas}, {Belepes}, {Fizetes}, {OsztalyId}";
         }
     }
 }
